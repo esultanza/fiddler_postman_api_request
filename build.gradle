@@ -19,9 +19,10 @@ repositories {
 
 dependencies {
     testImplementation "io.rest-assured:rest-assured:4.1.2"
-
+    testImplementation 'org.junit.platform:junit-platform-commons:1.7.0'
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter:5.6.0'
 }
 
 tasks.withType(JavaCompile) {
@@ -32,4 +33,8 @@ task api(type: Test) {
     useJUnitPlatform {
         includeTags 'api'
     }
+}
+
+test {
+    useJUnitPlatform()
 }
